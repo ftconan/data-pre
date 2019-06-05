@@ -1,7 +1,7 @@
 # coding=utf-8
 """
 @author: magician
-@file: pd_excel.py
+@file: excel.py
 @date: 2018/12/21
 """
 
