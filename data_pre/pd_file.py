@@ -92,7 +92,7 @@ class PdFile(object):
             else:
                 error = 'dtype error!'
 
-        if not error:
+        if error:
             return error
 
         return df
@@ -118,7 +118,6 @@ class PdFile(object):
         :params: dtype    int or string
         :return: DataFrame
         """
-        error = ''
         rows = self.kwargs.get('rows', [])
         columns = self.kwargs.get('columns', [])
         dtype = self.kwargs.get('dtype')
@@ -128,17 +127,15 @@ class PdFile(object):
         data.extend(columns)
         error = check_type(data, dtype)
         if not error:
-            return error
-
-        if dtype == 'int':
-            if len(rows) == 2 and len(columns) == 2:
-                df = self.df.iloc[rows[0]:rows[-1], columns[0]:columns[-1]]
+            if dtype == 'int':
+                if len(rows) == 2 and len(columns) == 2:
+                    df = self.df.iloc[rows[0]:rows[-1], columns[0]:columns[-1]]
+                else:
+                    error = 'rows or columns error!'
             else:
-                error = 'rows or columns error!'
-        else:
-            df = self.df.loc[rows, columns]
+                df = self.df.loc[rows, columns]
 
-        if not error:
+        if error:
             return error
 
         return df
