@@ -18,9 +18,9 @@ def read_json(file, **kwargs):
     return json_df
 
 
-def to_json(df, **kwargs):
+def write_json(df, **kwargs):
     """
-    to json
+    write json
     :param df:
     :param kwargs: orient
     :return: json

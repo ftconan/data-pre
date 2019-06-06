@@ -19,7 +19,7 @@ class PdFile(object):
         """
         init file,file_type
         :param file:
-        :param file_type:
+        :param file_type:  file type
         :param kwargs:
         """
         self.file = file
@@ -30,6 +30,7 @@ class PdFile(object):
     def read_file(self):
         """
         read excel, csv, pickle(at this time)
+        :param:  drop_flag   True or False
         :return: DataFrame
         """
         drop_flag = self.kwargs.get('drop_flag')
@@ -58,10 +59,10 @@ class PdFile(object):
 
     def df_preview(self):
         """
-        preview_file
-        :params: pre_list      index or label
-                 data_index    row or column
-                 dtype         int or string
+        preview DataFrame
+        :param: pre_list      index or label
+        :param: data_index    row or column
+        :param: dtype         int or string
         :return: DataFrame
         """
         pre_list = self.kwargs.get('pre_list', [])
@@ -99,9 +100,9 @@ class PdFile(object):
 
     def df_remove(self):
         """
-        df_remove
-        :params: rows     list
-                 columns  list
+        DataFrame remove
+        :param:         rows     list
+        :param:         columns  list
         :return: DataFrame
         """
         rows = self.kwargs.get('rows', [])
@@ -112,10 +113,10 @@ class PdFile(object):
 
     def df_select(self):
         """
-        df select
-        :params: rows     list
-        :params: columns  list
-        :params: dtype    int or string
+        DataFrame select
+        :param: rows     list
+        :param: columns  list
+        :param: dtype    int or string
         :return: DataFrame
         """
         rows = self.kwargs.get('rows', [])
@@ -139,3 +140,48 @@ class PdFile(object):
             return error
 
         return df
+
+    def df_style(self):
+        """
+        DataFrame style
+        :param:         is_style_func True or False
+        :param:         background_color:   background color
+        :param:         color:              font color
+        :param:         border_color:       border color
+        :param:         style_map_func      style map function
+        :param:         style_func          style function
+        :param:         precision
+        :return: DataFrame
+        """
+        is_style_func = self.kwargs.get('is_style_func', False)
+        if is_style_func:
+            background_color = self.kwargs.get('background_color')
+            color = self.kwargs.get('color')
+            border_color = self.kwargs.get('border_color')
+            df = self.df.style.set_properties(
+                **{
+                    'background-color': background_color,
+                    'color': color,
+                    'border-color': border_color
+                })
+        else:
+            style_map_func = self.kwargs.get('style_map_func')
+            style_func = self.kwargs.get('style_func')
+            precision = self.kwargs.get('precision', 2)
+            df = self.df.style.applymap(style_map_func).apply(style_func).set_precision(precision)
+
+        return df
+
+    def df_pre(self):
+        """
+        DataFrame preprocessing
+        :return:  DataFrame
+        """
+        pass
+
+    def df_statistics(self):
+        """
+        DataFrame statistics
+        :return: DataFrame
+        """
+        pass
