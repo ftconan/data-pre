@@ -1,6 +1,6 @@
 """
 @author: magician
-@file: pd_file.py
+@file: pd_csv.py
 @date: 2019/06/10
 """
 import os
@@ -30,10 +30,8 @@ def read_csv(file, **kwargs):
     parse_dates = kwargs.get('parse_dates')
     converters = kwargs.get('converters')
     dtypes = kwargs.get('dtypes')
-    # file type(csv file or csv path)
-    new_csv = file if os.path.isfile(file) else pd.ExcelFile(file)
 
-    csv_df = pd.read_csv(new_csv,
+    csv_df = pd.read_csv(file,
                          sep=sep,
                          header=header,
                          na_values=na_values,
