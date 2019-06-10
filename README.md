@@ -9,4 +9,3 @@ pandas data preprocessing
 * DataFrame style
 * DataFrame preprocessing
 * DataFrame statistics
-
