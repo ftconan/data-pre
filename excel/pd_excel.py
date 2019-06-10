@@ -57,7 +57,7 @@ def write_excel(df, **kwargs):
 
     :return: {
         'file_name': file_name,
-        'file_path': file_path
+        'output_path': output_path
     }
     """
     file_name = kwargs.get('file_name', '')
@@ -81,5 +81,5 @@ def write_excel(df, **kwargs):
 
     return {
         'file_name': file_name,
-        'file_path': file_path
+        'output_path': output_path
     }
