@@ -15,59 +15,60 @@ class PdFile(object):
     """
     PdFile
     """
-    def __init__(self, file, file_type, **kwargs):
+    def __init__(self, file, file_type):
         """
         init file,file_type
         :param file:
         :param file_type:  file type
-        :param kwargs:
         """
         self.file = file
         self.file_type = file_type
         self.df = pd.DataFrame()
-        self.kwargs = kwargs
 
-    def read_file(self):
+    def read_file(self, **kwargs):
         """
         read excel, csv, pickle(at this time)
-        :param:  drop_flag   True or False
+        :param:  kwargs  drop_flag: True or False
         :return: DataFrame
         """
-        drop_flag = self.kwargs.get('drop_flag')
+        drop_flag = kwargs.get('drop_flag')
+        if 'drop_flag' in list(kwargs.keys()):
+            kwargs.pop('drop_flag')
         if self.file_type not in list(READ_FILE.keys()):
             return '{0} file type is not supported at this time!'.format(self.file_type)
 
         reader = importlib.import_module(READ_FILE[self.file_type])
-        self.df = reader(self.file, **self.kwargs)
+        self.df = reader(self.file, **kwargs)
         # drop duplicates data
         self.df.drop_duplicates(inplace=bool(drop_flag))
 
         return self.df
 
-    def write_file(self):
+    def write_file(self, **kwargs):
         """
         write excel, csv, pickle(at this time)
+        :param:  kwargs
         :return: File
         """
         if self.file_type not in list(WRITE_FILE.keys()):
             return '{0} file type is not supported at this time!'.format(self.file_type)
 
         writer = importlib.import_module(WRITE_FILE[self.file_type])
-        new_file = writer(self.df, **self.kwargs)
+        new_file = writer(self.df, **kwargs)
 
         return new_file
 
-    def df_preview(self):
+    def df_preview(self, **kwargs):
         """
         preview DataFrame
-        :param: pre_list      index or label
-        :param: data_index    row or column
-        :param: dtype         int or string
+        :param: kwargs: pre_list      index or label
+                        data_index    row or column
+                        dtype         int or string
         :return: DataFrame
         """
-        pre_list = self.kwargs.get('pre_list', [])
-        data_index = self.kwargs.get('data_index', 'row')
-        dtype = self.kwargs.get('dtype', 'int')
+        pre_list = kwargs.get('pre_list', [])
+        data_index = kwargs.get('data_index', 'row')
+        dtype = kwargs.get('dtype', 'int')
         error = ''
         df = pd.DataFrame()
         if pre_list < 1 or not isinstance(pre_list, list):
@@ -98,30 +99,30 @@ class PdFile(object):
 
         return df
 
-    def df_remove(self):
+    def df_remove(self, **kwargs):
         """
         DataFrame remove
-        :param:         rows     list
-        :param:         columns  list
+        :param: kwargs  rows:    list
+                        columns: list
         :return: DataFrame
         """
-        rows = self.kwargs.get('rows', [])
-        columns = self.kwargs.get('columns', [])
+        rows = kwargs.get('rows', [])
+        columns = kwargs.get('columns', [])
         self.df = self.df.drop(index=rows, columns=columns, inplace=True)
 
         return self.df
 
-    def df_select(self):
+    def df_select(self, **kwargs):
         """
         DataFrame select
-        :param: rows     list
-        :param: columns  list
-        :param: dtype    int or string
+        :param: kwargs:    rows:    list
+                           columns: list
+                           dtype:   int or string
         :return: DataFrame
         """
-        rows = self.kwargs.get('rows', [])
-        columns = self.kwargs.get('columns', [])
-        dtype = self.kwargs.get('dtype')
+        rows = kwargs.get('rows', [])
+        columns = kwargs.get('columns', [])
+        dtype = kwargs.get('dtype')
         data = []
         df = pd.DataFrame()
         data.extend(rows)
@@ -141,23 +142,23 @@ class PdFile(object):
 
         return df
 
-    def df_style(self):
+    def df_style(self, **kwargs):
         """
         DataFrame style
-        :param:         is_style_func True or False
-        :param:         background_color:   background color
-        :param:         color:              font color
-        :param:         border_color:       border color
-        :param:         style_map_func      style map function
-        :param:         style_func          style function
-        :param:         precision
+        :param: kwargs: is_style_func:      True or False
+                        background_color:   background color
+                        color:              font color
+                        border_color:       border color
+                        style_map_func:     style map function
+                        style_func:         style function
+                        precision:          precision
         :return: DataFrame
         """
-        is_style_func = self.kwargs.get('is_style_func', False)
+        is_style_func = kwargs.get('is_style_func', False)
         if is_style_func:
-            background_color = self.kwargs.get('background_color')
-            color = self.kwargs.get('color')
-            border_color = self.kwargs.get('border_color')
+            background_color = kwargs.get('background_color')
+            color = kwargs.get('color')
+            border_color = kwargs.get('border_color')
             df = self.df.style.set_properties(
                 **{
                     'background-color': background_color,
@@ -165,23 +166,41 @@ class PdFile(object):
                     'border-color': border_color
                 })
         else:
-            style_map_func = self.kwargs.get('style_map_func')
-            style_func = self.kwargs.get('style_func')
-            precision = self.kwargs.get('precision', 2)
+            style_map_func = kwargs.get('style_map_func')
+            style_func = kwargs.get('style_func')
+            precision = kwargs.get('precision', 2)
             df = self.df.style.applymap(style_map_func).apply(style_func).set_precision(precision)
 
         return df
 
-    def df_pre(self):
+    def df_pre(self, **kwargs):
         """
         DataFrame preprocessing
-        :return:  DataFrame
+        :param kwargs:
+        :return: DataFrame
         """
         pass
 
-    def df_statistics(self):
+    def df_reshape(self, **kwargs):
+        """
+        DataFrame reshape
+        :param kwargs:
+        :return: DataFrame
+        """
+        pass
+
+    def df_total(self, **kwargs):
+        """
+        DataFrame total
+        :param kwargs:
+        :return: DataFrame
+        """
+        pass
+
+    def df_statistics(self, **kwargs):
         """
         DataFrame statistics
+        :param kwargs:
         :return: DataFrame
         """
         pass
