@@ -68,7 +68,7 @@ def write_excel(df, **kwargs):
     sheet_names = kwargs.get('sheet_names') if isinstance(kwargs.get('sheet_names'), list) else [
         kwargs.get('sheet_names', '')]
     index = kwargs.get('index', False)
-    merge_cells = kwargs.get('merge_cells', False)
+    merge_cells = kwargs.get('merge_cells', True)
 
     with pd.ExcelWriter(output_path, engine=engine) as writer:
         for key, sheet in enumerate(sheet_names):
