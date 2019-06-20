@@ -9,3 +9,5 @@ pandas data preprocessing
 * DataFrame style
 * DataFrame preprocessing
 * DataFrame statistics
+* DataFrame pivot
+* DataFrame total
