@@ -12,7 +12,7 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('./../../data_pre'))
+sys.path.insert(0, os.path.abspath('./../../pre'))
 
 
 # -- Project information -----------------------------------------------------

@@ -8,8 +8,8 @@ import importlib
 import pandas as pd
 import numpy as np
 
-from data_pre.pd_params import READ_FILE, WRITE_FILE
-from data_pre.pd_utils import check_type
+from pre.pd_params import READ_FILE, WRITE_FILE
+from pre.pd_utils import check_type
 
 
 class PdData(object):
