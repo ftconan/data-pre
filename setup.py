@@ -6,9 +6,9 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="pd-data-pre",
-    version="0.1.1",
-    keywords=("pip", "pd-data-pre", "excel", "csv", "json", "pickle"),
+    name="pd_data_pre",
+    version="0.1.2",
+    keywords=("pip", "pd_data_pre", "excel", "csv", "json", "pickle"),
     description="pandas data preprocessing tool",
     long_description="Use pandas to preprocess data tool. "
                      "support excel, csv, json, pickle different IO format data read and write; "
