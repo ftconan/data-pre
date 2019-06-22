@@ -7,7 +7,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="pd-data-pre",
-    version="0.1.0",
+    version="0.1.1",
     keywords=("pip", "pd-data-pre", "excel", "csv", "json", "pickle"),
     description="pandas data preprocessing tool",
     long_description="Use pandas to preprocess data tool. "
@@ -31,36 +31,11 @@ setup(
     include_package_data=True,
     platforms="any",
     install_requires=[
-        'alabaster',
-        'Babel',
-        'certifi',
-        'chardet',
-        'commonmark',
-        'docutils',
-        'future',
-        'idna',
-        'imagesize',
-        'Jinja2',
-        'MarkupSafe',
         'numpy',
-        'packaging',
         'pandas',
         'pkg-resources',
-        'Pygments',
-        'pyparsing==2.4.0',
         'python-dateutil',
         'pytz',
-        'recommonmark',
-        'request',
-        'six',
-        'snowballstemmer',
-        'Sphinx',
-        'sphinxcontrib-applehelp',
-        'sphinxcontrib-devhelp',
-        'sphinxcontrib-htmlhelp',
-        'sphinxcontrib-jsmath',
-        'sphinxcontrib-qthelp',
-        'sphinxcontrib-serializinghtml',
-        'urllib3',
+        'six'
     ]
 )
