@@ -6,9 +6,9 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="pd_data_pre",
-    version="0.1.2",
-    keywords=("pip", "pd_data_pre", "excel", "csv", "json", "pickle"),
+    name="data_pre",
+    version="0.1.0",
+    keywords=("pip", "data_pre", "excel", "csv", "json", "pickle"),
     description="pandas data preprocessing tool",
     long_description="Use pandas to preprocess data tool. "
                      "support excel, csv, json, pickle different IO format data read and write; "
@@ -23,7 +23,7 @@ setup(
                      "...",
     license="Apache Licence",
 
-    url="https://github.com/ftconan/pd-data-pre.git",
+    url="https://github.com/ftconan/data-pre.git",
     author="magician",
     author_email="ftconan@163.com",
 

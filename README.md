@@ -1,4 +1,4 @@
-# pandas-data-pre
+# data-pre
 pandas data preprocessing
 
 * read file(excel, json, pickle)
