@@ -12,9 +12,9 @@ from data_pre.pd_params import READ_FILE, WRITE_FILE
 from data_pre.pd_utils import check_type
 
 
-class PdFile(object):
+class PdData(object):
     """
-    PdFile
+    PdData
     """
 
     def __init__(self, file, file_type):
@@ -237,6 +237,16 @@ class PdFile(object):
         ]).append(df.sum().rename(total_list))
 
         return new_df
+
+    @staticmethod
+    def df_array(df, **kwargs):
+        """
+        DataFrame to array
+        :param df:     DataFrame
+        :param kwargs:
+        :return: DataFrame
+        """
+        return df.to_numpy().tolist()
 
     @staticmethod
     def df_statistics(df, **kwargs):
