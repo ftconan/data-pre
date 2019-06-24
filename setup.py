@@ -6,8 +6,8 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="pre",
-    version="0.1.0",
+    name="data_pre",
+    version="0.2.0",
     keywords=("pip", "pre", "excel", "csv", "json", "pickle"),
     description="pandas data preprocessing tool",
     long_description="Use pandas to preprocess data tool. "
@@ -23,7 +23,7 @@ setup(
                      "...",
     license="Apache Licence",
 
-    url="https://github.com/ftconan/data-pre.git",
+    url="https://github.com/ftconan/data_pre.git",
     author="magician",
     author_email="ftconan@163.com",
 
