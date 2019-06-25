@@ -5,16 +5,32 @@
 """
 import setuptools
 
-with open("README.md", "r") as fh:
-    long_description = fh.read()
+DESCRIPTION = """
+        # data-pre
+        pandas data preprocessing
+        
+        ### Use pandas to preprocess data tool.support excel, csv, json, pickle different IO format data read and write
+        
+        * read file(excel, json, pickle)
+        * write file
+        * DataFrame preview
+        * DataFrame drop
+        * DataFrame select
+        * DataFrame style
+        * DataFrame preprocessing
+        * DataFrame statistics
+        * DataFrame pivot
+        * DataFrame total
+        * Multi-index DataFrame downgrade
+"""
 
 setuptools.setup(
     name="data-pre",
-    version="0.1.6",
+    version="0.2.2",
     author="magician",
     author_email="ftconan@163.com",
     description="pandas data preprocessing tool",
-    long_description=long_description,
+    long_description=DESCRIPTION,
     long_description_content_type="markdown",
     url="https://github.com/ftconan/data_pre.git",
     packages=setuptools.find_packages(),
