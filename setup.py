@@ -26,7 +26,7 @@ DESCRIPTION = """
 
 setuptools.setup(
     name="data-pre",
-    version="0.2.2",
+    version="0.2.3",
     author="magician",
     author_email="ftconan@163.com",
     description="pandas data preprocessing tool",
