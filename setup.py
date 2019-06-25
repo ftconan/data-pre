@@ -5,23 +5,23 @@
 """
 import setuptools
 
-
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name="data-pre",
-    version="0.1.0",
+    version="0.1.6",
     author="magician",
     author_email="ftconan@163.com",
     description="pandas data preprocessing tool",
     long_description=long_description,
-    long_description_content_type="text/markdown",
+    long_description_content_type="markdown",
     url="https://github.com/ftconan/data_pre.git",
     packages=setuptools.find_packages(),
-    classifiers=[
-        "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: Apache Licence",
-        "Operating System :: OS Independent",
-    ],
+    include_package_data=True,
+    platforms="any",
+    install_requires=[
+        'pandas',
+        'numpy'
+    ]
 )
