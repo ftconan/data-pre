@@ -3,39 +3,25 @@
 @file: pd_pickle.py
 @date: 2019/06/21
 """
-from setuptools import setup, find_packages
+import setuptools
 
-setup(
-    name="data_pre",
-    version="0.2.0",
-    keywords=("pip", "pre", "excel", "csv", "json", "pickle"),
-    description="pandas data preprocessing tool",
-    long_description="Use pandas to preprocess data tool. "
-                     "support excel, csv, json, pickle different IO format data read and write; "
-                     "DataFrame preview function; "
-                     "DataFrame delete data; "
-                     "DataFrame select data; "
-                     "DataFrame add style; "
-                     "DataFrame data preprocessing; "
-                     "DataFrame data statistics ;"
-                     "DataFrame add subtotal, total; "
-                     "DataFrame pivot table"
-                     "...",
-    license="Apache Licence",
 
-    url="https://github.com/ftconan/data_pre.git",
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
+setuptools.setup(
+    name="data-pre",
+    version="0.1.0",
     author="magician",
     author_email="ftconan@163.com",
-
-    packages=find_packages(),
-    include_package_data=True,
-    platforms="any",
-    install_requires=[
-        'numpy',
-        'pandas',
-        'pkg-resources',
-        'python-dateutil',
-        'pytz',
-        'six'
-    ]
+    description="pandas data preprocessing tool",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    url="https://github.com/ftconan/data_pre.git",
+    packages=setuptools.find_packages(),
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: Apache Licence",
+        "Operating System :: OS Independent",
+    ],
 )

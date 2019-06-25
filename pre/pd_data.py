@@ -249,6 +249,34 @@ class PdData(object):
         return df.to_numpy().tolist()
 
     @staticmethod
+    def df_index_drop(df, **kwargs):
+        """
+        Multi-index DataFrame downgrade
+        :param df:     DataFrame
+        :param kwargs: drop_key: or 'produce_quantity'
+        :return: DataFrame
+        """
+        drop_key = kwargs.get('drop_key', 0)
+
+        new_df = df.copy(deep=True)
+        if drop_key in new_df.index:
+            new_df.index = new_df.index.droplevel(drop_key)
+        else:
+            new_df.columns = new_df.columns.droplevel(drop_key)
+
+        return new_df
+
+    @staticmethod
+    def df_reshape(df, **kwargs):
+        """
+        Multi-index DataFrame reshape
+        :param df:     DataFrame
+        :param kwargs:
+        :return: DataFrame
+        """
+        return pd.DataFrame(df.to_records())
+
+    @staticmethod
     def df_statistics(df, **kwargs):
         """
         DataFrame statistics
